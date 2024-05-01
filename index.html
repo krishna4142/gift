@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>gift</title>
+    <style>
+        .open{
+            width: 90%;
+            height: 600px;
+            /* border: 1px solid red; */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .left,.right{
+            width: 30%;
+            height: 50%;
+            /* border: 1px solid red; */
+        }
+        img{
+            width: 100%;
+            height: 100%;
+            
+        }
+         .open.ope .left{
+            transform-origin: left center;
+            animation: left 4s 1;
+            animation-fill-mode: forwards;
+         }
+         @keyframes left{
+            0%{
+                transform:perspective(500px) rotateY(0);
+            }
+            100%{
+                transform:perspective(500px) rotateY(-90deg);
+            }
+         }
+         .open.ope .right{
+            transform-origin: right center;
+            animation: right 4s 1;
+            animation-fill-mode: forwards;
+         }
+         @keyframes right{
+            0%{
+                transform:perspective(500px) rotateY(0);
+            }
+            100%{
+                transform:perspective(500px) rotateY(90deg);
+            }
+         }
+         .open.clos .left{
+            animation: closeleft 5s 1;
+            animation-fill-mode: forwards;
+            transform-origin: left center;
+         }
+         @keyframes closeleft{
+            0%{
+                transform:perspective(500px) rotateY(-90deg);
+            }
+            100%{
+                transform:perspective(500px) rotateY(0);
+            } 
+         }
+         .open.clos .right{
+            animation: closeright 5s 1;
+            animation-fill-mode: forwards;
+            transform-origin: right center;
+         }
+         @keyframes closeright{
+            0%{
+                transform:perspective(500px) rotateY(90deg);
+            }
+            100%{
+                transform:perspective(500px) rotateY(0);
+            } 
+         }
+         .start{
+            display: none;
+         }
+         .action.sai .start{
+            display: block;
+         }
+         .action{
+            display: flex;
+            justify-content: center;
+         }
+         button{
+            width: 100px;
+            font-size: 20px;
+            font-weight: bold;
+            margin-top: 20px;
+            border-radius: 20px;
+            outline: none;
+            border: none;
+         }
+         .green{
+            background: rgba(76, 137, 76, 0.726);
+            color: white;
+         }
+         .red{
+            background-color: rgb(193, 35, 35);
+            color: white;
+         }
+         .start{
+            background-color: rgb(26, 246, 183);
+         }
+         .display{
+            position: absolute;
+            height: 50px;
+            width: 70px;
+            /* border: 1px solid red; */
+            display: none;
+            text-align:center;
+            padding-top: 3%;
+            background:linear-gradient( to top left ,rgb(24, 24, 189),rgb(183, 35, 59),rgb(180, 180, 15),rgb(222, 63, 63),rgb(227, 227, 20),rgb(232, 14, 86));
+            color: transparent;
+            -webkit-background-clip:text ;
+         }
+         .open.dis .display{
+            display: block;
+            animation: disopn 8s 1;
+            animation-fill-mode: forwards;
+         }@keyframes disopn{
+            to{
+                transform:scale(6);
+            }
+         }
+          body{
+            background-color: #34ba07d1;
+            margin-left:8% ;
+          }
+          a{
+            text-decoration: none;
+            color: white;
+          }
+          .tag{
+            position: absolute;
+            top: 10%;
+            font-size: 200%;
+            background:linear-gradient( to top left ,rgb(24, 24, 189),rgb(183, 35, 59),rgb(180, 180, 15),rgb(222, 63, 63),rgb(227, 227, 20),rgb(232, 14, 86));
+            color: transparent;
+            -webkit-background-clip:text ;
+            display: none;
+          }
+          .open.ope .tag{
+            display: block;
+          }
+           
+    </style>
+</head>
+<body>
+    <div class="open">
+        <div class="tag">CONGRATULATIONS</div>
+        <div class="display"><img src=""  alt="img" class="image" ></div>
+        <div class="left"><img src="coter.jpg" alt=""></div>
+        <div class="right"><img src="coter.jpg" alt=""></div>
+    </div>
+    <div class="action">
+        <button onclick="openimg()" class="green">open</button> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <!-- <button class="start"><a href="#">start</a></button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <button onclick="closeimg()" class="red">close</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -->
+    </div>
+    <script>
+        let open=document.querySelector('.open');
+        let start=document.querySelector('.action');
+        let play=document.querySelector(".display");
+        let imgage=document.querySelector(".image");
+        function openimg(){
+            open.classList.add('ope');
+            open.classList.remove('clos');
+            start.classList.add('sai');
+            open.classList.add('dis');
+            imgage.src="coter.jpg"
+        }
+        // function closeimg(){
+        //     open.classList.add('clos');
+        //     open.classList.remove('ope');
+        //     start.classList.remove('sai');
+        //     open.classList.remove('dis');
+        // }
+        let n=0;
+        let a=["img1.jpg","img2.jpg","img3.jpg","img4.jpg","img5.jpg","img6.jpg"]
+        setInterval(()=>{
+            n++;
+            if(n>a.length-1){
+                n=0;
+            }
+            imgage.src=a[n]
+        },550)
+    </script>
+</body>
+</html>
